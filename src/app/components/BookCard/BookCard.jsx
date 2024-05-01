@@ -1,11 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import AddCart from './AddCart';
 
 const BookCard = ({book}) => {
     return (
         
-        <div className='w-full border shadow-md py-4'>
+        <div className='w-full border bg-white hover:bg-gray-200 shadow-md py-4'>
             <Link href={`store/${book.id}`}>
             <div className='w-full h-40 relative'>
                 <Image src={book.cover} alt={book.title}  className='object-contain' fill/>
@@ -27,9 +28,9 @@ const BookCard = ({book}) => {
                 <p className='text-2xl font-medium flex items-center italic'>${book.sellPrice} <span className='text-xs ml-1.5 font-normal not-italic'>for Sell</span></p>
                 <p className='text-2xl font-medium flex items-center italic'>${book.rentPrice} <span className='text-xs ml-1.5 font-normal not-italic'>for Rent</span></p>
             </div>
-            <div className='px-2'>
-                <button className='w-full  py-2 bg-purple-500 text-white font-medium rounded-md'>Add to Cart</button>
-                </div>
+            <div>
+                <AddCart />
+            </div>
         </div>
     );
 };

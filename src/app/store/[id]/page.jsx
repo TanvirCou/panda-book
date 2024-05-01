@@ -1,3 +1,4 @@
+import AddCart from '@/app/components/BookCard/AddCart';
 import { getBookById } from '@/lib/fakeData';
 import Image from 'next/image';
 import React from 'react';
@@ -8,7 +9,7 @@ const page = ({ params }) => {
     const book = getBookById(id);
 
     return (
-        <div className='mt-44 md:mt-0 p-4 flex justify-center'>
+        <div className='mt-[150px] md:mt-0 p-4 flex justify-center'>
             <div className='w-[90%] md:w-[80%] py-4'>
 
                 <div className='w-full h-60 relative my-1'>
@@ -34,8 +35,10 @@ const page = ({ params }) => {
                 <div>
                     <p className='mb-2 flex justify-center'>Available for Rent: <span className='ml-1 font-medium'>{book.isRented ? "Yes" : "No"}</span></p>
                 </div>
-                <div className='flex justify-center w-full '>
-                    <button className='w-fit px-10 py-2 bg-purple-500 text-white font-medium rounded-md'>Add to Cart</button>
+                <div className='flex justify-center mt-2'>
+                    <div className='w-[80%] sm:w-[70%]  lg:w-[50%] xl:w-[40%]'>
+                        <AddCart />
+                    </div>
                 </div>
             </div>
         </div>
