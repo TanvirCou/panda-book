@@ -1,4 +1,5 @@
-import React from 'react';
+"use client"
+import React, { useContext } from 'react';
 import { 
     HomeIcon, 
     UserGroupIcon, 
@@ -6,8 +7,11 @@ import {
     CubeTransparentIcon, RectangleStackIcon, CogIcon, TruckIcon,Squares2X2Icon, ShoppingCartIcon, 
     ArrowRightEndOnRectangleIcon} from "@heroicons/react/24/solid";
 import Link from 'next/link';
+import { CartContext } from '@/app/context/CartProvider/CartProvider';
 
 const NavLink = () => {
+    const { cart } = useContext(CartContext);
+
     const links = [
         {name: 'Home', href: '/', icon: HomeIcon},
         {name: 'Books', href: '/store', icon: BookOpenIcon},
@@ -28,7 +32,7 @@ const NavLink = () => {
                     return (
                         <Link href={link.href} key={link.name} className='flex cursor-pointer text-black hover:text-purple-700 flex-grow justify-center md:justify-start items-center px-6 md:px-8 py-2 md:py-[10px] mt-1 my-0 md:my-1 mx-1 md:mx-0 rounded-md bg-gray-200 w-fit md:w-full'>
                             <IconComponent className='w-6'/>
-                            <p className='text-sm font-medium ml-2 hidden md:block'>{link.name}</p>
+                            <p className='text-sm font-medium ml-2 hidden md:block'>{(link.name==='Cart' && cart && cart.length > 0) ? `${link.name}(${cart.length})` : `${link.name}`}</p>
                         </Link>
                        
                     )

@@ -37,7 +37,7 @@ const page = ({ params }) => {
                 </div>
                 <div className='flex justify-center mt-2'>
                     <div className='w-[80%] sm:w-[70%]  lg:w-[50%] xl:w-[40%]'>
-                        <AddCart />
+                        <AddCart book={book}/>
                     </div>
                 </div>
             </div>

@@ -29,7 +29,7 @@ const BookCard = ({book}) => {
                 <p className='text-2xl font-medium flex items-center italic'>${book.rentPrice} <span className='text-xs ml-1.5 font-normal not-italic'>for Rent</span></p>
             </div>
             <div>
-                <AddCart />
+                <AddCart book={book}/>
             </div>
         </div>
     );
