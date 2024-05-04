@@ -10,7 +10,7 @@ const AddCart = ({book}) => {
 
     const handleAddToCart = (event, reason) => {
         event.preventDefault();
-        const itemsExits = cart.find(c => c.id === book.id);
+        const itemsExits = cart.find(c => c._id === book._id);
         if(itemsExits) {
             toast.error(`${book.title} already added to the cart`);
         } else {

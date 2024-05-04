@@ -1,5 +1,11 @@
 import React from 'react';
 
+export const metadata = {
+    title: 'Panda-Book | CheckOut',
+    description: 'Panda-Book checkout page',
+  }
+
+
 const layout = ({children, cartDetails, cartStats, payment}) => {
     return (
         <div className='mt-[150px] md:mt-0 p-4 flex justify-center'>

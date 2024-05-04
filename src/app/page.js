@@ -3,6 +3,7 @@ import bgPic from "../../public/book-bg.png";
 import Link from "next/link";
 
 export default function Home() {
+  
   return (
     <div className="w-full h-screen flex justify-center items-center relative">
       <Image src={bgPic} alt="Panda-book home page picture" placeholder="blur" fill className="object-cover blur-sm"/>

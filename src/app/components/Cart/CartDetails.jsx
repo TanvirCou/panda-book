@@ -56,13 +56,13 @@ const CartDetails = () => {
               cart && cart.map(item => (
                 <tr key={item.id}>
                   <td className='flex items-center'>
-                    <Image src={item.cover} alt={item.title} width={20} height={16} className='object-cover' />
+                    <Image src={item.cover} alt={item.title} width={20} height={16} className='object-cover' priority={true}/>
                     <p className='ml-3'>{item.title}</p>
                   </td>
                   <td>{item.author}</td>
                   <td>{item.type}</td>
                   <td>${item.type === "buy" ? item.sellPrice : item.rentPrice}</td>
-                  <td><TrashIcon onClick={() => handleRemoveFromCart(item.id)} className='w-5' /></td>
+                  <td><TrashIcon onClick={() => handleRemoveFromCart(item.id)} className='w-5 cursor-pointer' /></td>
                 </tr>
               ))
             }

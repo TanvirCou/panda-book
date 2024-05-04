@@ -7,14 +7,14 @@ const BookCard = ({book}) => {
     return (
         
         <div className='w-full border bg-white hover:bg-gray-200 shadow-md py-4'>
-            <Link href={`store/${book.id}`}>
+            <Link href={`store/${book._id}`}>
             <div className='w-full h-40 relative'>
-                <Image src={book.cover} alt={book.title}  className='object-contain' fill/>
+                <Image src={book.cover} alt={book.title}  className='object-contain' fill priority={true}/>
 
             </div>
             </Link>
             <div className='flex flex-col items-center my-1'>
-            <Link href={`store/${book.id}`}>
+            <Link href={`store/${book._id}`}>
                 <p className='text-md font-semibold'>{book.title}</p>
                 </Link>
                 <p className='text-xs font-medium text-gray-600'>By: {book.author}</p>

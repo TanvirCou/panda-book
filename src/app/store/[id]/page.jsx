@@ -1,19 +1,44 @@
 import AddCart from '@/app/components/BookCard/AddCart';
-import { getBookById } from '@/lib/fakeData';
+import { getBookById, getBooks } from '@/lib/db/queries';
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
 import React from 'react';
 
-const page = ({ params }) => {
+export async function generateMetadata({ params }) {
+    const {id} = params;
+
+    const book = await getBookById(id);
+   
+    return {
+      title: book ? `Panda-Book | ${book.title}` : "Panda-Book | Book not found",
+      description: book ? book.description : "Panda-Book"
+    }
+}
+
+// export async function generateStaticParams() {
+//     const books = await getBooks();
+
+//     return books.map(book => ({
+//         id: book._id
+//     }));
+// }
+
+
+const page = async({ params }) => {
     const { id } = params;
 
-    const book = getBookById(id);
+    const book = await getBookById(id);
 
+        if(!book) {
+            notFound();
+        }
+        
     return (
         <div className='mt-[150px] md:mt-0 p-4 flex justify-center'>
             <div className='w-[90%] md:w-[80%] py-4'>
 
                 <div className='w-full h-60 relative my-1'>
-                    <Image src={book.cover} alt={book.title} className='object-contain' fill />
+                    <Image src={book.cover} alt={book.title} className='object-contain' fill priority={true}/>
 
                 </div>
 
@@ -37,7 +62,7 @@ const page = ({ params }) => {
                 </div>
                 <div className='flex justify-center mt-2'>
                     <div className='w-[80%] sm:w-[70%]  lg:w-[50%] xl:w-[40%]'>
-                        <AddCart book={book}/>
+                    <AddCart book={book}/>
                     </div>
                 </div>
             </div>
